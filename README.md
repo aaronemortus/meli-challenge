@@ -46,7 +46,7 @@ python manage.py loaddata core/users_groups_fixture.json
 
 These steps will load users and groups (user roles).
 
-Password for all users is *melitest*.
+Password for all users is *melitest*
 
  - manager1 (manager)
  - manager2 (manager)
