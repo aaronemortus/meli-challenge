@@ -6,6 +6,13 @@
 
 ## GETTING STARTED
 
+### With Docker
+```
+docker-compose up
+```
+
+### OR...
+
 ### Create virtualenv
 ```
 python3 -m venv venv
@@ -86,3 +93,6 @@ The roles (manager, employee, customer) have permissions to see:
 - http://localhost:8000/login
 - http://localhost:8000/logout
 - http://localhost:8000/venta/lista/
+
+The role superadmin (user "admin"), have permissions to see:
+- http://localhost:8000/django-admin/

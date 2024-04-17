@@ -69,7 +69,6 @@ class SaleCreateView(SalesPermissionView, FormView):
         return super().form_valid(form)
 
     def get_success_url(self):
-        # Redirigir al usuario a la vista de detalle de la venta recién creada
         return reverse_lazy('sales:sale-detail', kwargs={'uuid': self.sale.id})
 
 
@@ -145,11 +144,9 @@ class TopSoldProductsReportView(SalesPermissionView, View):
         start_date_str = request.GET.get('start_date')
         end_date_str = request.GET.get('end_date')
 
-        # Convertir las cadenas de fecha en objetos de fecha
         start_date = parse_date(start_date_str)
         end_date = parse_date(end_date_str)
 
-        # Consultar los productos más vendidos en el rango de fechas especificado
         top_sold_products = SaleItem.objects.filter(
             sale__sale_date__range=(start_date, end_date)
         ).values('product__name').annotate(
@@ -159,11 +156,9 @@ class TopSoldProductsReportView(SalesPermissionView, View):
         today_date = datetime.now().strftime('%d-%m-%Y')
         filename = f"top_sold_products_report_{today_date}.csv"
 
-        # Crear el archivo CSV
         response = HttpResponse(content_type='text/csv')
         response['Content-Disposition'] = f'attachment; filename="{filename}"'
 
-        # Escribir los datos en el archivo CSV
         writer = csv.writer(response)
         writer.writerow(['Producto', 'Cantidad Vendida'])
         for product in top_sold_products:
