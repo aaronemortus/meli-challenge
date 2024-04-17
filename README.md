@@ -24,6 +24,7 @@ Rename this file with *.env.example* and then fill variables with your own.
 For testing purposes, sqlite is currently selected, but it is possible to create the database with postgres or mysql.
 
 Once you have defined all settings in _.env_ file, then you have to run django migrations.
+
 ```
 python manage.py migrate
 ```
