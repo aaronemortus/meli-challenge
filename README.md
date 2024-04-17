@@ -5,11 +5,6 @@
  2. Python 3.9.6
 
 ## GETTING STARTED
-## WITH DOCKER
-```
-docker-compose up --build
-```
-## OR
 
 ### Create virtualenv
 ```
@@ -89,3 +84,4 @@ The roles (manager, employee) have permissions to see:
 The roles (manager, employee, customer) have permissions to see:
 - http://localhost:8000/login
 - http://localhost:8000/logout
+- http://localhost:8000/venta/lista/
