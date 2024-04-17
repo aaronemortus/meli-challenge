@@ -7,7 +7,7 @@
 {% block extra_css %}{% endblock %}
 
 {% block content %}
-<section id="sale">
+<section id="reports" class="mb-5">
     <h5 class="text-center">Crear reporte de ventas</h5>
     <div class="form mb-5">
         <form action="{% url 'sales:sales-report' %}" method="get">
@@ -23,6 +23,15 @@
             {% csrf_token %}
             {{ form.as_p }}
             <button class="btn btn-light btn-sm" type="submit">Generar Informe de Productos más Vendidos</button>
+        </form>
+    </div>
+
+    <h5 class="text-center mt-5">Crear reporte de inventario</h5>
+    <div class="form">
+        <form action="{% url 'inventory:inventory-report' %}" method="get">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-light btn-sm" type="submit">Generar Informe de Inventario</button>
         </form>
     </div>
 </section>
