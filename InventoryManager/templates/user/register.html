@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% load custom_filters %}
+{% load static %}
+{% block title %}Registro{% endblock %}
+{% block content %}
+<section id="login">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title"><i class="fa fa-user-plus" aria-hidden="true"></i> Alta a usuario</h5>
+                    <p class="card-text">Crea una cuenta para un
+                        {% if employee_account %}empleado{% elif customer_account %}cliente{% endif %}
+                    </p>
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                        <div class="alert alert-dismissible alert-danger">
+                            <strong>{{ error }}</strong>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user-circle-o"></i></span>
+                            </div>
+                            <div>
+                                {{ form.username|add_attributes:"class:form-control form-control-sm,placeholder:Username" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.username.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <div>
+                                {{ form.first_name|add_attributes:"class:form-control form-control-sm,placeholder:First name" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.first_name.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-user"></i></span>
+                            </div>
+                            <div>
+                                {{ form.last_name|add_attributes:"class:form-control form-control-sm,placeholder:Last name" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.last_name.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-envelope"></i></span>
+                            </div>
+                            <div>
+                                {{ form.email|add_attributes:"class:form-control form-control-sm,placeholder:Email" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.email.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            <div>
+                                {{ form.password1|add_attributes:"class:form-control form-control-sm,placeholder:Password" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.password1.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="input-group form-group mb-2">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"><i class="fa fa-key"></i></span>
+                            </div>
+                            <div>
+                                {{ form.password2|add_attributes:"class:form-control form-control-sm,placeholder:Confirm your password" }}
+                            </div>
+                            <div>
+                                <ul class="list-unstyled errorlist">
+                                    {% for error in form.password2.errors %}
+                                    <li>{{ error }}</li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        <input type="hidden"
+                               name="account_type"
+                               value="{% if employee_account %}employee{% elif customer_account %}customer{% endif %}">
+                        <div class="form-group">
+                            <input type="submit" value="Crear" class="btn btn-sm login_btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

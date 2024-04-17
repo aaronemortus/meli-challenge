@@ -1,0 +1,43 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Detalle de Venta{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+<section id="sale-detail">
+    {% if error_message %}
+        <div class="alert alert-danger">
+            <ul>
+                {% for message in error_message %}
+                    <li>{{ message }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endif %}
+
+    <h4>Detalle de Venta</h4>
+    <ul>
+        <li>ID: {{ sale.id }}</li>
+        <li>Fecha de Venta: {{ sale.sale_date }}</li>
+        <li>Total: ${{ sale.total }}</li>
+        <li>Cliente: {{ sale.customer }}</li>
+    </ul>
+
+    <h4>Ítems de Venta</h4>
+    <ul>
+        {% for sale_item in sale.sale_items.all %}
+        <li>
+            Producto: {{ sale_item.product.name }}<br>
+            Cantidad: {{ sale_item.quantity_sold }}<br>
+            Precio Unitario: ${{ sale_item.product.price }}<br>
+            Total: ${{ sale_item.total_price }}
+        </li>
+        {% endfor %}
+    </ul>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}

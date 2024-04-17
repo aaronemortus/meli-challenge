@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Crear Producto en Inventario{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+    <section id="stock_list">
+        <h4 class="text-center">Registra un nuevo producto en el Inventario</h4>
+        <div style="width: 60%; margin: 0 auto;">
+            <form method="post">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="id_name" class="form-label">Nombre del producto</label>
+                    {{ form.name|add_attributes:"class:form-control form-control-sm,placeholder:Nombre del producto" }}
+                    {{ form.name.errors }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_description" class="form-label">Descripción</label>
+                    {{ form.description|add_attributes:"class:form-control form-control-sm,placeholder:Descripción" }}
+                    {{ form.decription.errors }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_price" class="form-label">Precio</label>
+                    {{ form.price|add_attributes:"class:form-control form-control-sm,placeholder:Precio" }}
+                    {{ form.price.errors }}
+                </div>
+                <div class="mb-3">
+                    <label for="id_stock_quantity" class="form-label">Stock</label>
+                    {{ form.stock_quantity|add_attributes:"class:form-control form-control-sm,placeholder:Stock" }}
+                    {{ form.stock_quantity.errors }}
+                </div>
+                <button type="submit">Registrar</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
+{% block extra_scripts %}{% endblock %}

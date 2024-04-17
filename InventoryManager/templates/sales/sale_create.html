@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Crear Venta{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+<section id="sale">
+    <h4 class="text-center">Venta</h4>
+    <form method="post">
+        {% csrf_token %}
+        <h5>Selecciona al cliente</h5>
+        {{ form.as_p }}
+
+        <h5><a class="nav-link" href="{% url 'users:register_customer' %}">Da de alta a tu cliente</a></h5>
+
+        <h5>Selecciona los productos y la cantidad deseada.</h5>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Producto</th>
+                    <th>Stock</th>
+                    <th>Cantidad</th>
+                    <th>Seleccionar</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for product in products %}
+                <tr>
+                    <td>{{ product.name }}</td>
+                    <td>{{ product.stock_quantity }}</td>
+                    <td><input type="number" name="quantity_{{ product.id }}" value="0" min="0" max="{{ product.stock_quantity }}"></td>
+                    <td><input type="checkbox" name="products" value="{{ product.id }}"></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Crear Venta</button>
+    </form>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}

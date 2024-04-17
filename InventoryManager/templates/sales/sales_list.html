@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}
+    {% if not request.user|has_group:'customer' %}
+        Listado ventas
+    {% elif request.user|has_group:'customer' %}
+        Mis compras
+    {% endif %}
+{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/datatables.min.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section id="sales_list">
+        <h4 class="text-center mb-5">
+            {% if not request.user|has_group:'customer' %}
+                Listado ventas
+            {% elif request.user|has_group:'customer' %}
+                Mis compras
+            {% endif %}
+        </h4>
+        {% if object_list %}
+            <table id="product_table" class="table table-dark table-striped nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Cliente</th>
+                        <th>Fecha y hora de venta</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for sale in object_list %}
+                        <tr>
+                            <td><a href="{% url 'sales:sale-detail' uuid=sale.id %}">{{ sale.id }}</a></td>
+                            <td>{{ sale.customer }}</td>
+                            <td>{{ sale.sale_date }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h4 class="text-center text-secondary">
+                No hay {% if not request.user|has_group:'customer' %}ventas{% elif request.user|has_group:'customer' %}compras{% endif %} registradas
+            </h4>
+        {% endif %}
+
+    </section>
+{% endblock %}
+{% block extra_scripts %}
+    <script src="{% static 'js/datatables.min.js' %}"></script>
+    <script>
+        $(document).ready( function () {
+            var table = new DataTable('#product_table', {
+                language: {
+                    url: "{% static 'lang/es-ES.json' %}",
+                },
+            });
+        } );
+    </script>
+{% endblock %}

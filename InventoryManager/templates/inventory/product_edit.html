@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Actualizar Producto en Inventario{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+    <section id="stock_list">
+        <h4 class="text-center">Actualiza este producto en el Inventario</h4>
+        <h6 class="text-center text-secondary">Recuerda actualizar el stock cada vez que haya recepción de mercancia.</h6>
+        <div style="width: 60%; margin: 0 auto;">
+            <form method="post">
+            {% csrf_token %}
+            <div class="mb-3">
+                <p>Nombre: <span class="text-secondary"> {{ object.name }}</span></p>
+            </div>
+            <div class="mb-3">
+                <p>Descripción: <span class="text-secondary"> {{ object.description }}</span></p>
+            </div>
+            <div class="mb-3">
+                <p>Precio: <span class="text-secondary"> ${{ object.price }}</span></p>
+            </div>
+            <div class="mb-3">
+                <label for="id_stock_quantity" class="form-label">Stock</label>
+                {{ form.stock_quantity|add_attributes:"class:form-control form-control-sm,placeholder:Stock" }}
+                {{ form.stock_quantity.errors }}
+            </div>
+            <button type="submit">Actualizar</button>
+        </form>
+        </div>
+    </section>
+{% endblock %}
+{% block extra_scripts %}
+    <script>
+        document.getElementById('id_stock_quantity').addEventListener('input', function() {
+            var currentStock = parseInt(this.value);
+            var originalStock = parseInt(this.getAttribute('data-original-stock'));
+
+            if (currentStock < originalStock) {
+                this.value = originalStock;
+            }
+        });
+    </script>
+{% endblock %}

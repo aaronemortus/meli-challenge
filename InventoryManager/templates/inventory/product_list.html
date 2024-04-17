@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Stock{% endblock %}
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/datatables.min.css' %}" />
+{% endblock %}
+
+{% block content %}
+    <section id="stock_list">
+        <h4 class="text-center mb-5">Productos</h4>
+        <div class="mb-5">
+            <a href="{% url 'inventory:product_create' %}"><h6><i class="fa fa-plus" aria-hidden="true"></i>Agregar productos al inventario</h6></a>
+        </div>
+        {% if object_list %}
+            <table id="product_table" class="table table-dark table-striped nowrap w-100">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Producto</th>
+                        <th>Descripción</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                        <th>Disponible</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for product in object_list %}
+                        <tr>
+                            <td>{{ product.id }}</td>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.description }}</td>
+                            <td>${{ product.price }}</td>
+                            <td>{{ product.stock_quantity }}</td>
+                            <td>
+                                {% if product.stock_quantity > 0 %}
+                                    <i class="fa fa-check-circle text-success" aria-hidden="true"></i>
+                                {% else %}
+                                    <i class="fa fa-times-circle text-danger" aria-hidden="true"></i>
+                                {% endif %}
+                            </td>
+                            {% if user.is_authenticated and not request.user|has_group:'customer' %}
+                                <td><a href="{% url 'inventory:product_edit' slug=product.slug %}">Recepción de mercancia</a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <h4 class="text-center text-secondary">No hay productos en existencia.</h4>
+        {% endif %}
+
+    </section>
+{% endblock %}
+{% block extra_scripts %}
+    <script src="{% static 'js/datatables.min.js' %}"></script>
+    <script>
+        $(document).ready( function () {
+            var table = new DataTable('#product_table', {
+                language: {
+                    url: "{% static 'lang/es-ES.json' %}",
+                },
+                columnDefs: [ {
+                    targets: [5, 6],
+                    orderable: false
+                } ],
+            });
+        } );
+    </script>
+{% endblock %}

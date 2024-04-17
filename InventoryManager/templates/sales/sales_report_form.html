@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+{% load custom_filters %}
+
+{% block title %}Reportes de ventas{% endblock %}
+
+{% block extra_css %}{% endblock %}
+
+{% block content %}
+<section id="sale">
+    <h5 class="text-center">Crear reporte de ventas</h5>
+    <div class="form mb-5">
+        <form action="{% url 'sales:sales-report' %}" method="get">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-light btn-sm" type="submit">Generar Informe de Ventas</button>
+        </form>
+    </div>
+
+    <h5 class="text-center">Crear reporte de productos más vendidos</h5>
+    <div class="form">
+        <form action="{% url 'sales:top-sales-report' %}" method="get">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-light btn-sm" type="submit">Generar Informe de Productos más Vendidos</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_scripts %}{% endblock %}

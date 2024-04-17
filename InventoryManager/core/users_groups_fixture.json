@@ -1,0 +1,224 @@
+[
+{
+  "model": "users.customuser",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$lhXRjRlWBYeYUfxDE3T4Xm$+iC6Ti1o8e5VaC+PnpSV8hKZBAVFkJm7m22gMj6N6u0=",
+    "last_login": "2024-04-17T07:30:24.629Z",
+    "is_superuser": true,
+    "username": "admin",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:30:01.761Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$d6vYQES7CcRlc2vJShxhbB$G6y0QKMEXvApg/bD0OFu0b8cL5mkiS6CjUaqWMbZkk4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "customer1",
+    "first_name": "Customer",
+    "last_name": "Uno",
+    "email": "customer1@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:31:00Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 3,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$EI0l9tarZ3lclreJipBGS1$GwKc8ZJ+keTNTu5b4+jXw6nlrW6dupJCcd2FlntNf84=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "customer2",
+    "first_name": "Customer",
+    "last_name": "Dos",
+    "email": "customer2@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:31:42Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 4,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$OzdBtfN2QczsNkyx9pq02J$D8asVEC4SbP9xGARm/mKWJz1j75n2nwfPBJTuYMurDM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "customer3",
+    "first_name": "Customer",
+    "last_name": "Tres",
+    "email": "customer3@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:32:13Z",
+    "groups": [
+      1
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 5,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$KfRrHgkxCyms2Zd71sYsBe$BVqmIOMqwr8tSMdeIDm9hOC82XPZTJpXbG4VGJjWlZU=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "employee1",
+    "first_name": "Employee",
+    "last_name": "Uno",
+    "email": "employee1@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:32:43Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 6,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$6PDM9DIrNTFfVPB9MJUquv$QpF3rbfbxvq5yhqbVZhnDlrLzpA5rwHntBIjLgMm0O8=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "employee2",
+    "first_name": "Employee",
+    "last_name": "Dos",
+    "email": "employee2@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:33:11Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 7,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$yg3dKm1SLuvXwG20QNuTdz$cxrC3NKunIXv0QtYA2EQr8XEGinjtzhVLtBdx83pFv4=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "employee3",
+    "first_name": "Employee",
+    "last_name": "Tres",
+    "email": "employee3@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:33:45Z",
+    "groups": [
+      3
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 8,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$LREpTAYM7RM1dygyeb9izG$LZkJAfEIVHf0ww1A2xO3pPXNEFW7dW4fn6gf74GoeuQ=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager1",
+    "first_name": "Manager",
+    "last_name": "Uno",
+    "email": "manager1@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:34:29Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 9,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$iWSQvCrxMuZUssEke5tQUf$HkdEWsdc+y/XTr7dYYzFbumPE5OGiAKLqF22HppwSgM=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager2",
+    "first_name": "Manager",
+    "last_name": "Dos",
+    "email": "manager2@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:35:01Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "users.customuser",
+  "pk": 10,
+  "fields": {
+    "password": "pbkdf2_sha256$600000$79WZKJdkhMFNJr145t8e8h$yvp2W2ot6fZBRLb2BwIhSZyU690kDqX97yA60yClmsY=",
+    "last_login": null,
+    "is_superuser": false,
+    "username": "manager3",
+    "first_name": "Manager",
+    "last_name": "Tres",
+    "email": "manager3@melitest.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2024-04-17T07:35:22Z",
+    "groups": [
+      2
+    ],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 1,
+  "fields": {
+    "name": "customer",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 2,
+  "fields": {
+    "name": "manager",
+    "permissions": []
+  }
+},
+{
+  "model": "auth.group",
+  "pk": 3,
+  "fields": {
+    "name": "employee",
+    "permissions": []
+  }
+}
+]
