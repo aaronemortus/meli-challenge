@@ -25,7 +25,7 @@ pip install -r requirements.txt
 
 ### Create .env file
 An envirnoment  variables file can be found in the project: *.env.example*. This file shows env variables for settings in order to run project. For that purpose it was used [python-decouple](https://github.com/henriquebastos/python-decouple) package.
-Rename this file with *.env.example* and then fill variables with your own.
+Rename this file with *.env* and then fill variables with your own.
 
 ### Database
 For testing purposes, sqlite is currently selected, but it is possible to create the database with postgres or mysql.
